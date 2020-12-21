@@ -2,22 +2,17 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
 }
+apply from: '../dependencies.gradle'
+apply from: '../publish.gradle'
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
-
+    compileSdkVersion versions.compileSdk
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 30
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.compileSdk
+        versionCode versions.versionCode
+        versionName versions.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -26,6 +21,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    lintOptions {//增加
+        abortOnError false
+    }
+
 }
 
 dependencies {

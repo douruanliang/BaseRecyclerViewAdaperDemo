@@ -1,10 +1,19 @@
 apply plugin: 'com.novoda.bintray-release'
+
+def siteUrl = 'https://github.com/douruanliang/BaseRecyclerViewAdaperDemo'
 publish {
     repoName = "maven"
-    userOrg = 'youaccount'
-    groupId = 'com.test.novoad'
-    artifactId = 'test-novoad'
-    publishVersion = '1.0.0'
+    userOrg = 'douruanliang2'
+    groupId = 'com.dourl.base'
+    artifactId = 'baseRecyclerViewAdapter'
+    publishVersion = '1.0.1'
     desc = 'This is BaseRecyclerViewAdapter by dourl'
-    website = 'https://github.com/you project'
+    website = siteUrl
+    issueTracker = "${website}/issues"
+    repository = "${website}.git"
+}
+tasks.withType(Javadoc) {//防止编码问题
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addStringOption('encoding', 'UTF-8')
+    options.addStringOption('charSet', 'UTF-8')
 }
